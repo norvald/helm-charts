@@ -1,0 +1,57 @@
+apiVersion: v1
+entries:
+  istio-config:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-04-22T08:46:15.589238716+02:00"
+    dependencies:
+    - alias: kiali
+      condition: istio.enabled
+      name: kiali-server
+      repository: https://kiali.org/helm-charts
+      version: 1.83.0
+    description: A Helm chart for Kubernetes
+    digest: ba1e5e2fa4b9721362ca59049599dbcaddaaf2619b8e7dced68cb89ba5761608
+    name: istio-config
+    type: application
+    urls:
+    - https://lt-public-helm-charts.lysetele.cloud/packages/istio-config-0.1.0.tgz
+    version: 0.1.0
+  monitoring:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-04-22T08:46:15.625268943+02:00"
+    dependencies:
+    - alias: prometheus
+      condition: prometheus.enabled
+      name: kube-prometheus-stack
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 58.1.3
+    - alias: loki
+      condition: loki.enabled
+      name: loki
+      repository: https://grafana.github.io/helm-charts
+      version: 6.2.0
+    - alias: promtail
+      condition: promtail.enabled
+      name: promtail
+      repository: https://grafana.github.io/helm-charts
+      version: 6.15.5
+    - alias: tempo
+      condition: tempo.enabled
+      name: tempo
+      repository: https://grafana.github.io/helm-charts
+      version: 1.7.2
+    - alias: otel
+      condition: otel.enabled
+      name: opentelemetry-collector
+      repository: https://open-telemetry.github.io/opentelemetry-helm-charts
+      version: 0.87.2
+    description: A Helm chart for Kubernetes
+    digest: 25fffe933b15881526a7bf7b6d7687b0d37660d6444035f5ab3ea1c9a1a60096
+    name: monitoring
+    type: application
+    urls:
+    - https://lt-public-helm-charts.lysetele.cloud/packages/monitoring-0.1.0.tgz
+    version: 0.1.0
+generated: "2024-04-22T08:46:15.588406239+02:00"
