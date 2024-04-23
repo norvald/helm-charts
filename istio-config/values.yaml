@@ -1,0 +1,43 @@
+ingress:
+  prefix: "sandbox.lysetele.cloud"
+
+#istiod:
+#  defaults:
+#    meshConfig:
+#      extensionProviders:
+#      - name: otel-tracing
+#        opentelemetry:
+#          port: 4317
+#          service: opentelemetry-collector.otel-collector.svc.cluster.local
+#istio-ingress:
+#  defaults:
+#    #docker.io/istio/proxyv2:1.21.1
+#    name: istio-ingress
+#    service:
+#      annotations:
+#        service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+#        service.beta.kubernetes.io/azure-load-balancer-internal-subnet: aks-internal-lb
+kiali:
+  external_services:
+    prometheus:
+      # Prometheus service name is "metrics" and is in the "monitoring" namespace
+      url: "http://prometheus-kube-prometheus-prometheus.monitoring:9090/"
+    grafana:
+      enabled: true
+      # Grafana service name is "grafana" and is in the "monitoring" namespace.
+      in_cluster_url: 'http://prometheus-grafana.monitoring:80/'
+      # Public facing URL of Grafana
+      url: 'http://grafana.sandbox.lysetele.cloud'
+      dashboards:
+      - name: "Istio Service Dashboard"
+        variables:
+          namespace: "var-namespace"
+          service: "var-service"
+      - name: "Istio Workload Dashboard"
+        variables:
+          namespace: "var-namespace"
+          workload: "var-workload"
+      - name: "Istio Mesh Dashboard"
+      - name: "Istio Control Plane Dashboard"
+      - name: "Istio Performance Dashboard"
+      - name: "Istio Wasm Extension Dashboard"    

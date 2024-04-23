@@ -1,0 +1,18 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: grafana-vs
+spec:
+  hosts:
+    - {{ printf "grafana.%s" $.Values.ingress.prefix | quote }}
+  gateways:
+  - istio-system/ingress-gateway-configuration
+  http:
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        host: {{ printf "prometheus-grafana.%s.svc.cluster.local" $.Release.Namespace }}
+        port:
+          number: 80

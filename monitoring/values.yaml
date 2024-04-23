@@ -1,0 +1,71 @@
+
+ingress:
+  prefix: "sandbox.lysetele.cloud"
+
+prometheus:
+  prometheus:
+    prometheusSpec:
+      scrapeInterval: 15s
+
+loki:
+  mode: SingleBinary
+  loki:
+    commonConfig:
+      replication_factor: 1
+    storage:
+      type: 'filesystem'
+    schemaConfig:
+      configs:
+      - from: 2024-01-01
+        store: tsdb
+        index:
+          prefix: loki_index_
+          period: 24h
+        object_store: filesystem # we're storing on filesystem so there's no real persistence here.
+        schema: v13
+  singleBinary:
+    replicas: 1
+  read:
+    replicas: 0
+  backend:
+    replicas: 0
+  write:
+    replicas: 0
+
+otel:
+  mode: deployment
+  config:
+    exporters:
+      #zipkin:
+      #  # Export to zipkin for easy querying
+      #  endpoint: http://zipkin.istio-system.svc:9411/api/v2/spans
+      logging:
+        loglevel: debug
+      otlp: 
+        endpoint: "tempo.monitoring.svc.cluster.local:4317" 
+        tls: 
+          insecure: true 
+      #jaeger:
+      #  endpoint: tempo.monitoring.svc.cluster.local:14250
+      #  tls: 
+      #     insecure: true 
+      #  sending_queue:
+      #    enabled: true
+      #  retry_on_failure:
+      #    enabled: true
+    service:
+      pipelines:
+        logs:
+          receivers: [otlp]
+          processors: [batch]
+          exporters: [debug]
+        traces:
+          exporters:
+            - debug
+            - otlp
+            #- jaeger
+  resources:
+    limits:
+      cpu: 2
+      memory: 2Gi
+

@@ -1,0 +1,18 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: prometheus-vs
+spec:
+  hosts:
+    - {{ printf "prometheus.%s" $.Values.ingress.prefix | quote }}
+  gateways:
+    - istio-system/ingress-gateway-configuration
+  http:
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        host: {{ printf "prometheus-kube-prometheus-prometheus.%s.svc.cluster.local" $.Release.Namespace }}
+        port:
+          number: 9090
