@@ -3,7 +3,7 @@ entries:
   istio-config:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-04-23T08:26:24.311842272+02:00"
+    created: "2024-04-26T12:40:12.118565657+02:00"
     dependencies:
     - alias: kiali
       condition: istio.enabled
@@ -11,16 +11,16 @@ entries:
       repository: https://kiali.org/helm-charts
       version: 1.83.0
     description: A Helm chart for Kubernetes
-    digest: 81a6c0e438532c02358709a282b3019a6f664593c7d00a2810d968ae1c131c51
+    digest: 0153dab02a705bec4b1d06e09639d45d84c6fd5660388b9da7a906b6cfde79f1
     name: istio-config
     type: application
     urls:
-    - https://norvald.github.io/helm-charts/packages/istio-config-0.1.0.tgz
+    - http://charts.bt5.home:8314/packages/istio-config-0.1.0.tgz
     version: 0.1.0
   monitoring:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-04-23T08:26:24.345539048+02:00"
+    created: "2024-04-26T12:40:12.153979495+02:00"
     dependencies:
     - alias: prometheus
       condition: prometheus.enabled
@@ -48,10 +48,10 @@ entries:
       repository: https://open-telemetry.github.io/opentelemetry-helm-charts
       version: 0.87.2
     description: A Helm chart for Kubernetes
-    digest: 5324052980cd8dc84b55dd90d69a0ae7a2c3733055296cb98aa80203b1d472f5
+    digest: 5d853fbe655300002d048190f6aa4cffc67010934e47fcdbfb77c3f32a272b2d
     name: monitoring
     type: application
     urls:
-    - https://norvald.github.io/helm-charts/packages/monitoring-0.1.0.tgz
+    - http://charts.bt5.home:8314/packages/monitoring-0.1.0.tgz
     version: 0.1.0
-generated: "2024-04-23T08:26:24.311033711+02:00"
+generated: "2024-04-26T12:40:12.117181005+02:00"
