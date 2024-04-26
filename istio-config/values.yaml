@@ -21,11 +21,11 @@ kiali:
   external_services:
     prometheus:
       # Prometheus service name is "metrics" and is in the "monitoring" namespace
-      url: "http://prometheus-kube-prometheus-prometheus.monitoring:9090/"
+      url: "http://monitoring-prometheus-prometheus.monitoring:9090/"
     grafana:
       enabled: true
       # Grafana service name is "grafana" and is in the "monitoring" namespace.
-      in_cluster_url: 'http://prometheus-grafana.monitoring:80/'
+      in_cluster_url: 'http://monitoring-grafana.monitoring:80/'
       # Public facing URL of Grafana
       url: 'http://grafana.sandbox.lysetele.cloud'
       dashboards:
