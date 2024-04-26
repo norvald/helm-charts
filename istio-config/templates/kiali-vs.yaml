@@ -13,6 +13,6 @@ spec:
         prefix: /
     route:
     - destination:
-        host: {{ printf "kiali-grafana.%s.svc.cluster.local" $.Release.Namespace }}
+        host: {{ printf "kiali.%s.svc.cluster.local" $.Release.Namespace }}
         port:
           number: 20001
