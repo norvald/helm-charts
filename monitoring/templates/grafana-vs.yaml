@@ -13,6 +13,6 @@ spec:
         prefix: /
     route:
     - destination:
-        host: {{ printf "prometheus-grafana.%s.svc.cluster.local" $.Release.Namespace }}
+        host: {{ printf "monitoring-grafana.%s.svc.cluster.local" $.Release.Namespace }}
         port:
           number: 80

@@ -13,6 +13,6 @@ spec:
         prefix: /
     route:
     - destination:
-        host: {{ printf "prometheus-kube-prometheus-prometheus.%s.svc.cluster.local" $.Release.Namespace }}
+        host: {{ printf "monitoring-prometheus-prometheus.%s.svc.cluster.local" $.Release.Namespace }}
         port:
           number: 9090
